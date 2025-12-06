@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     print(
     f"Employee {name} is done with tasks({completed_count}/{total_tasks}):"
-)
+    )
 
     for task in done_tasks:
         print(f"\t {task.get('title')}")
