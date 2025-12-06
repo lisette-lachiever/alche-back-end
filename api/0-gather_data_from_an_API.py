@@ -8,19 +8,18 @@ import requests
 import sys
 
 
-def main():
-    # Get employee ID from command line
+
+if __name__ == "__main__":
+
+     # Get employee ID from command line
     emp_id = sys.argv[1]
+    url = "https://jsonplaceholder.typicode.com/"
 
     # Get employee information
-    user = requests.get(
-        "https://jsonplaceholder.typicode.com/users/{}".format(emp_id)
-    ).json()
+    user = requests.get(url.format(emp_id)).json()
 
     # Get todos for that employee
-    todos = requests.get(
-        "https://jsonplaceholder.typicode.com/todos?userId={}".format(emp_id)
-    ).json()
+    todos = requests.get(url.format(emp_id)).json()
 
     # Employee name
     name = user.get("name")
@@ -37,8 +36,3 @@ def main():
     # Print completed task titles
     for task in done:
         print("\t {}".format(task.get("title")))
-
-
-if __name__ == "__main__":
-    main()
-
