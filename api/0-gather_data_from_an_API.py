@@ -1,38 +1,27 @@
 #!/usr/bin/python3
-"""
-Simple script to show TODO list progress of an employee
-using the JSONPlaceholder API.
-"""
 
 import requests
 import sys
 
 
-
 if __name__ == "__main__":
+    if len(sys.argv) < 2:
+        sys.exit("Usage: ./0-gather_data_from_an_API.py <employee_id>")
 
-     # Get employee ID from command line
     emp_id = sys.argv[1]
-    url = "https://jsonplaceholder.typicode.com/"
+    base_url = "https://jsonplaceholder.typicode.com/"
 
-    # Get employee information
-    user = requests.get(url.format(emp_id)).json()
+    user = requests.get(f"{base_url}users/{emp_id}").json()
+    todos = requests.get(f"{base_url}todos?userId={emp_id}").json()
 
-    # Get todos for that employee
-    todos = requests.get(url.format(emp_id)).json()
-
-    # Employee name
     name = user.get("name")
 
-    # Tasks
-    total = len(todos)
-    done = [t for t in todos if t.get("completed") is True]
-    number_done = len(done)
+    done_tasks = [task for task in todos if task.get("completed")]
+    total_tasks = len(todos)
+    completed_count = len(done_tasks)
 
-    # Print first line
-    print("Employee {} is done with tasks({}/{}):".format(
-        name, number_done, total))
+    print(f"Employee {name} is done with tasks({completed_count}/{total_tasks}):")
 
-    # Print completed task titles
-    for task in done:
-        print("\t {}".format(task.get("title")))
+    for task in done_tasks:
+        print(f"\t {task.get('title')}")
+
