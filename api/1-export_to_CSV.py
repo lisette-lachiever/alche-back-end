@@ -3,9 +3,9 @@
 Simple script to export an employee's TODO list to CSV.
 """
 
+import csv
 import requests
 import sys
-import csv
 
 
 def main():
