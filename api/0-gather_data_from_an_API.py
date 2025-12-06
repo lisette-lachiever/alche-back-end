@@ -1,4 +1,9 @@
 #!/usr/bin/python3
+"""
+Displays TODO list progress for a given employee
+using the JSONPlaceholder API.
+"""
+
 
 import requests
 import sys
@@ -24,4 +29,3 @@ if __name__ == "__main__":
 
     for task in done_tasks:
         print(f"\t {task.get('title')}")
-
