@@ -1,10 +1,8 @@
 #!/usr/bin/python3
-
 """
 Simple script to show TODO list progress of an employee
 using the JSONPlaceholder API.
 """
-
 
 import requests
 import sys
@@ -15,10 +13,14 @@ def main():
     emp_id = sys.argv[1]
 
     # Get employee information
-    user = requests.get("https://jsonplaceholder.typicode.com/users/{}".format(emp_id)).json()
+    user = requests.get(
+        "https://jsonplaceholder.typicode.com/users/{}".format(emp_id)
+    ).json()
 
     # Get todos for that employee
-    todos = requests.get("https://jsonplaceholder.typicode.com/todos?userId={}".format(emp_id)).json()
+    todos = requests.get(
+        "https://jsonplaceholder.typicode.com/todos?userId={}".format(emp_id)
+    ).json()
 
     # Employee name
     name = user.get("name")
