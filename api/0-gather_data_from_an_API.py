@@ -1,5 +1,11 @@
 #!/usr/bin/python3
 
+"""
+Simple script to show TODO list progress of an employee
+using the JSONPlaceholder API.
+"""
+
+
 import requests
 import sys
 
